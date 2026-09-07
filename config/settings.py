@@ -134,8 +134,19 @@ USE_TZ = True
 
 # STATIC_URL = 'static/'
 
-STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+# added
+# STATIC_URL = "static/"
+# STATICFILES_DIRS = [BASE_DIR / "static"]
+
+# edited
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+# Tell Django where to find static files during development
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+# If you run collectstatic in production:
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
@@ -147,6 +158,11 @@ MAILERS = {
 }
 
 # added
-LOGIN_REDIRECT_URL = "home"
-LOGIN_URL = "login"
-LOGOUT_REDIRECT_URL = "login"
+# LOGIN_REDIRECT_URL = "home"
+# LOGIN_URL = "login"
+# LOGOUT_REDIRECT_URL = "login"
+
+# edited
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/home/'  # Matches your dashboard URL path
+LOGOUT_REDIRECT_URL = 'login'

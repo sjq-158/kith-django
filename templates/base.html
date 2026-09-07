@@ -2,10 +2,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>KITH</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>KITH — Pharmacy Inventory</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    {% block content %}{% endblock %}
+    <div class="brand-bar">
+        <div class="brand-mark">K</div>
+        <div class="brand-text">KITH</div>
+        <div class="brand-sub">Multi-Branch Pharmacy Inventory</div>
+    </div>
+    <div class="page-body">
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>
