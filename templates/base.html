@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>KITH — Pharmacy Inventory</title>
+    <title>{% block title %}KITH — Pharmacy Inventory{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
@@ -14,5 +14,7 @@
     <div class="page-body">
         {% block content %}{% endblock %}
     </div>
+    
+    {% block extra_js %}{% endblock %}
 </body>
 </html>
