@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}KITH — Home{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="home-card">
+    <h1>HOME SCREEN</h1>
+    <p>You're logged in to the KITH pharmacy inventory system.</p>
+    <p>
+        <a href="{% url 'profiles:profile' %}">Profile</a> ·
+        <a href="{% url 'user_settings:settings' %}">Settings</a> ·
+        <a href="{% url 'login:logout' %}">Logout</a>
+    </p>
+</div>
+{% endblock %}

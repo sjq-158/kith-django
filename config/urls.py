@@ -21,12 +21,25 @@ Including another URLconf
 #     path('admin/', admin.site.urls),
 # ]
 
-# added
+# # added
+# from django.contrib import admin
+# from django.urls import path, include
+
+# urlpatterns = [
+#     path("admin/", admin.site.urls),
+#     path("", include("accounts.urls")),
+#     path("", include("dashboard.urls")),
+# ]
+
+# edited pt 2
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("accounts.urls")),
-    path("", include("dashboard.urls")),
+    path("login/", include("apps.login.urls")),
+    path("register/", include("apps.register.urls")),
+    path("profile/", include("apps.profiles.urls")),
+    path("settings/", include("apps.user_settings.urls")),
+    path("", include("apps.home.urls")),
 ]

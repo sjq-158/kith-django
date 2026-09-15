@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}KITH — Login{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+    <h1>Welcome Back</h1>
+    <p class="subtitle">Sign in to manage pharmacy stock</p>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}
+                {% if field.name == 'password' or field.name == 'password1' or field.name == 'password2' %}
+                    <div class="password-group">
+                        {{ field }}
+                        <button type="button" class="toggle-password" data-target="{{ field.id_for_label }}">Show</button>
+                    </div>
+                {% else %}
+                    {{ field }}
+                {% endif %}
+                {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+                    </ul>
+                {% endif %}
+            </p>
+        {% endfor %}
+        <button type="submit">Login</button>
+    </form>
+    <div class="switch-link">
+        No account yet? <a href="{% url 'register:register' %}">Register here</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/login/login.js' %}"></script>
+{% endblock %}

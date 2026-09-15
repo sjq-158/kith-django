@@ -5,9 +5,15 @@
 # __pycache__/
 # *.py
 
-venv/
+# venv/
+# .env
+# *.sqlite3
+# db.sqlite3
+# __pycache__/
+# *.pyc
+
 .env
-*.sqlite3
-db.sqlite3
+venv/
 __pycache__/
 *.pyc
+db.sqlite3

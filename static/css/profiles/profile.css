@@ -1,0 +1,23 @@
+.profile-card {
+    background: #fff;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 10px;
+    border-top: 4px solid var(--accent);
+    box-shadow: 0 4px 18px rgba(47, 64, 79, 0.12);
+    padding: 2.2rem 2rem;
+    margin: 0 auto;
+}
+.profile-card h1 { color: var(--dark); font-size: 1.4rem; margin: 0 0 1rem 0; }
+.profile-card label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--dark); margin: 0.8rem 0 0.3rem; }
+.profile-card input[type="text"], .profile-card textarea {
+    width: 100%; padding: 0.6rem 0.7rem; border: 1px solid var(--soft);
+    border-radius: 6px; background-color: var(--bg); font-size: 0.9rem;
+}
+.profile-card button {
+    margin-top: 1rem; background-color: var(--accent); color: #fff;
+    border: none; padding: 0.7rem 1.2rem; border-radius: 6px;
+    font-weight: 600; cursor: pointer;
+}
+.profile-card .switch-link { margin-top: 1rem; font-size: 0.85rem; }
+.profile-card .switch-link a { color: var(--accent); text-decoration: none; font-weight: 600; }

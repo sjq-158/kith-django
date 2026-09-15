@@ -30,6 +30,18 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# INSTALLED_APPS = [
+#     'django.contrib.admin',
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+#     "accounts", # added
+#     "dashboard", # added
+# ]
+
+# edited
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,8 +49,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "accounts", # added
-    "dashboard", # added
+    "apps.login",
+    "apps.register",
+    "apps.home",
+    "apps.profiles",
+    "apps.user_settings",
 ]
 
 MIDDLEWARE = [
@@ -138,15 +153,23 @@ USE_TZ = True
 # STATIC_URL = "static/"
 # STATICFILES_DIRS = [BASE_DIR / "static"]
 
-# edited
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
-# Tell Django where to find static files during development
+# # edited
+# # Static files (CSS, JavaScript, Images)
+# STATIC_URL = '/static/'
+# # Tell Django where to find static files during development
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static',
+# ]
+# # If you run collectstatic in production:
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# edited pt 2
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
-# If you run collectstatic in production:
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
@@ -163,6 +186,11 @@ MAILERS = {
 # LOGOUT_REDIRECT_URL = "login"
 
 # edited
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = '/home/'  # Matches your dashboard URL path
-LOGOUT_REDIRECT_URL = 'login'
+# LOGIN_URL = 'login'
+# LOGIN_REDIRECT_URL = '/home/'  # Matches your dashboard URL path
+# LOGOUT_REDIRECT_URL = 'login'
+
+# edited pt 2
+LOGIN_URL = 'login:login'
+LOGIN_REDIRECT_URL = 'home:home'
+LOGOUT_REDIRECT_URL = 'login:login'

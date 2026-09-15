@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}KITH — Settings{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/user_settings/settings.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-card">
+    <h1>Settings</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label><input type="checkbox" name="dark_mode" {% if settings_obj.dark_mode %}checked{% endif %}> Dark mode</label><br>
+        <label><input type="checkbox" name="email_notifications" {% if settings_obj.email_notifications %}checked{% endif %}> Email notifications</label>
+        <button type="submit">Save</button>
+    </form>
+    <div class="switch-link"><a href="{% url 'home:home' %}">Back to Home</a></div>
+</div>
+{% endblock %}

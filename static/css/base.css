@@ -1,0 +1,42 @@
+:root {
+    --dark: #2F404F;
+    --accent: #3894A1;
+    --bg: #F0F1EE;
+    --soft: #C7DAD3;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-bar {
+    background-color: var(--dark);
+    color: #fff;
+    padding: 1.1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.brand-bar .brand-mark {
+    width: 30px; height: 30px; border-radius: 6px;
+    background-color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.95rem;
+}
+.brand-bar .brand-text { font-size: 1.15rem; font-weight: 600; letter-spacing: 0.3px; }
+.brand-bar .brand-sub { font-size: 0.8rem; color: var(--soft); margin-left: 0.4rem; }
+
+.page-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}

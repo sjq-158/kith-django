@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}KITH — Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profiles/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-card">
+    <h1>My Profile</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="full_name">Full name</label>
+        <input type="text" name="full_name" id="full_name" value="{{ profile.full_name }}">
+        <label for="bio">Bio</label>
+        <textarea name="bio" id="bio" rows="4">{{ profile.bio }}</textarea>
+        <button type="submit">Save</button>
+    </form>
+    <div class="switch-link"><a href="{% url 'home:home' %}">Back to Home</a></div>
+</div>
+{% endblock %}

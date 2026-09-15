@@ -1,0 +1,38 @@
+.auth-card {
+    background: #fff;
+    width: 100%;
+    max-width: 380px;
+    border-radius: 10px;
+    border-top: 4px solid var(--accent);
+    box-shadow: 0 4px 18px rgba(47, 64, 79, 0.12);
+    padding: 2.2rem 2rem;
+}
+.auth-card h1 { color: var(--dark); font-size: 1.4rem; margin: 0 0 0.3rem 0; }
+.auth-card .subtitle { color: #6b7c85; font-size: 0.85rem; margin-bottom: 1.5rem; }
+.auth-card form p { margin: 0 0 1rem 0; }
+.auth-card form label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--dark); margin-bottom: 0.3rem; }
+.auth-card form input {
+    width: 100%; padding: 0.6rem 0.7rem;
+    border: 1px solid var(--soft); border-radius: 6px;
+    background-color: var(--bg); font-size: 0.9rem;
+}
+.auth-card form input:focus { outline: none; border-color: var(--accent); background-color: #fff; }
+.auth-card form ul { font-size: 0.75rem; color: #6b7c85; padding-left: 1.1rem; margin: 0.3rem 0 1rem 0; }
+.auth-card button {
+    width: 100%; background-color: var(--accent); color: #fff;
+    border: none; padding: 0.7rem; border-radius: 6px;
+    font-size: 0.95rem; font-weight: 600; cursor: pointer;
+    margin-top: 0.3rem; transition: background-color 0.15s ease;
+}
+.auth-card button:hover { background-color: #2f7883; }
+.auth-card .switch-link { text-align: center; font-size: 0.85rem; color: #6b7c85; margin-top: 1.2rem; }
+.auth-card .switch-link a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.auth-card .switch-link a:hover { text-decoration: underline; }
+.password-group { position: relative; }
+.password-group input { padding-right: 2.5rem !important; }
+.toggle-password {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: #6b7c85; cursor: pointer;
+    font-size: 0.75rem; font-weight: 600; padding: 0; width: auto !important; margin: 0 !important;
+}
+.toggle-password:hover { color: var(--dark); background: none !important; }
