@@ -4,7 +4,7 @@
 {% block title %}Kith — Multi-Branch Pharmacy Inventory{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/landing/landing.css' %}">
+<link rel="stylesheet" href="{% static 'css/landing/landing.css' %}?v={% now 'U' %}">
 {% endblock %}
 
 {% block header %}
@@ -26,7 +26,7 @@
             <svg class="icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             Sign In
         </a>
-        <a href="{% url 'register:register' %}" class="btn-primary">Get Started</a>
+        <a href="{% url 'register:register' %}" class="btn-primary">Get Started <svg class="btn-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
     </div>
 </header>
 {% endblock %}
@@ -38,7 +38,10 @@
         <p>Empower your pharmacy network with real-time stock orchestration, automated dispensing logs, and multi-location medical supplies tracking.</p>
 
         <div class="hero-cta-group">
-            <a href="{% url 'login:login' %}" class="btn-primary btn-lg">Launch System</a>
+            <a href="{% url 'login:login' %}" class="btn-primary btn-lg">
+                <svg class="btn-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                Launch System
+            </a>
             <a href="{% url 'login:login' %}" class="btn-text btn-muted">View live records &rarr;</a>
         </div>
 

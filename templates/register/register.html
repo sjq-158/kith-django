@@ -6,18 +6,18 @@
 {% block content %}
 <main class="auth-split-grid">
     <div class="auth-left">
-        <div class="auth-card">
+        <div class="auth-card auth-card--wide">
             <h2>Create Account</h2>
             <p class="subtitle">Join the Kith inventory management network</p>
 
-            <form method="post" novalidate>
+            <form method="post" class="form-grid" novalidate>
                 {% csrf_token %}
                 {% if form.non_field_errors %}
                 <div class="form-error">{{ form.non_field_errors }}</div>
                 {% endif %}
 
                 {% for field in form %}
-                <div class="field-group">
+                <div class="field-group{% if field.name == 'first_name' or field.name == 'last_name' or field.name == 'license_number' or field.name == 'phone' %} half{% endif %}">
                     <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
                     {% if field.name == 'password' or field.name == 'confirm_password' %}
                     <div class="input-wrapper">
@@ -33,7 +33,10 @@
                 </div>
                 {% endfor %}
 
-                <button type="submit" class="btn-submit">Register Branch Account</button>
+                <button type="submit" class="btn-submit">
+                    <svg class="btn-icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                    Register Branch Account
+                </button>
             </form>
 
             <div class="auth-footer">
@@ -53,5 +56,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/register/register.js' %}"></script>
+<script src="{% static 'js/register/register.js' %}?v={% now 'U' %}"></script>
 {% endblock %}
