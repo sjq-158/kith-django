@@ -1,38 +1,177 @@
+/* =========================================
+   REGISTER CARD & FORM STYLES
+   ========================================= */
+
 .auth-card {
     background: #fff;
     width: 100%;
-    max-width: 380px;
+    max-width: 440px;
     border-radius: 10px;
-    border-top: 4px solid var(--accent);
+    border-top: 4px solid var(--accent, #3a8891);
     box-shadow: 0 4px 18px rgba(47, 64, 79, 0.12);
-    padding: 2.2rem 2rem;
+    padding: 2.5rem 2.2rem;
+    box-sizing: border-box;
+    margin: 2rem auto;
 }
-.auth-card h1 { color: var(--dark); font-size: 1.4rem; margin: 0 0 0.3rem 0; }
-.auth-card .subtitle { color: #6b7c85; font-size: 0.85rem; margin-bottom: 1.5rem; }
-.auth-card form p { margin: 0 0 1rem 0; }
-.auth-card form label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--dark); margin-bottom: 0.3rem; }
-.auth-card form input {
-    width: 100%; padding: 0.6rem 0.7rem;
-    border: 1px solid var(--soft); border-radius: 6px;
-    background-color: var(--bg); font-size: 0.9rem;
+
+.auth-card h1 {
+    font-family: var(--font-heading, 'Montserrat', sans-serif);
+    color: var(--dark, #2f404f);
+    font-size: 1.5rem;
+    margin: 0 0 0.4rem 0;
 }
-.auth-card form input:focus { outline: none; border-color: var(--accent); background-color: #fff; }
-.auth-card form ul { font-size: 0.75rem; color: #6b7c85; padding-left: 1.1rem; margin: 0.3rem 0 1rem 0; }
-.auth-card button {
-    width: 100%; background-color: var(--accent); color: #fff;
-    border: none; padding: 0.7rem; border-radius: 6px;
-    font-size: 0.95rem; font-weight: 600; cursor: pointer;
-    margin-top: 0.3rem; transition: background-color 0.15s ease;
+
+.auth-card .subtitle {
+    color: #6b7c85;
+    font-size: 0.9rem;
+    margin-bottom: 1.8rem;
 }
-.auth-card button:hover { background-color: #2f7883; }
-.auth-card .switch-link { text-align: center; font-size: 0.85rem; color: #6b7c85; margin-top: 1.2rem; }
-.auth-card .switch-link a { color: var(--accent); font-weight: 600; text-decoration: none; }
-.auth-card .switch-link a:hover { text-decoration: underline; }
-.password-group { position: relative; }
-.password-group input { padding-right: 2.5rem !important; }
+
+/* Form input spacing and labels */
+.auth-card p {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.auth-card label {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--dark, #2f404f);
+    margin-bottom: 0.4rem;
+}
+
+/* Standard inputs (like Username) */
+.auth-card input[type="text"],
+.auth-card input[type="email"],
+.auth-card input[type="password"] {
+    width: 100%;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--soft, #cbd5e1);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    outline: none;
+    background-color: #fff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-card input[type="text"]:focus,
+.auth-card input[type="email"]:focus,
+.auth-card input[type="password"]:focus {
+    border-color: var(--accent, #3a8891);
+    box-shadow: 0 0 0 3px rgba(58, 136, 145, 0.1);
+}
+
+/* =========================================
+   PASSWORD GROUPS & TOGGLE ICON FIX
+   ========================================= */
+
+.password-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid var(--soft, #cbd5e1);
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.password-group:focus-within {
+    border-color: var(--accent, #3a8891);
+    box-shadow: 0 0 0 3px rgba(58, 136, 145, 0.1);
+}
+
+/* Strip borders/background from the inner Django inputs so they fit seamlessly */
+.password-group input[type="password"],
+.password-group input[type="text"] {
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 0.85rem;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 0.95rem;
+    box-shadow: none !important;
+    margin: 0;
+}
+
+/* Position the eye toggle buttons cleanly inside on the right */
 .toggle-password {
-    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
-    background: none; border: none; color: #6b7c85; cursor: pointer;
-    font-size: 0.75rem; font-weight: 600; padding: 0; width: auto !important; margin: 0 !important;
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: #94a3b8;
 }
-.toggle-password:hover { color: var(--dark); background: none !important; }
+
+.toggle-password:hover {
+    color: var(--dark, #2f404f);
+}
+
+.toggle-password svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* =========================================
+   SUBMIT BUTTON & LINKS
+   ========================================= */
+
+.auth-card button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--accent, #3a8891);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.15s ease;
+}
+
+.auth-card button[type="submit"]:hover {
+    background-color: #2f7883;
+}
+
+.switch-link {
+    text-align: center;
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: #6b7c85;
+}
+
+.switch-link a {
+    color: var(--accent, #3a8891);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}
+
+/* Error lists & Help texts */
+.errorlist {
+    margin: 0.3rem 0 0 0;
+    padding: 0;
+    list-style: none;
+    color: #e53e3e;
+    font-size: 0.8rem;
+}
+
+.helptext {
+    display: block;
+    font-size: 0.75rem;
+    color: #718096;
+    margin-top: 0.3rem;
+}

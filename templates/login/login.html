@@ -19,7 +19,13 @@
                 {% if field.name == 'password' or field.name == 'password1' or field.name == 'password2' %}
                     <div class="password-group">
                         {{ field }}
-                        <button type="button" class="toggle-password" data-target="{{ field.id_for_label }}">Show</button>
+                        <button type="button" class="toggle-password" data-target="{{ field.id_for_label }}" aria-label="Toggle password visibility">
+                            <!-- Default Eye Icon (Show) -->
+                            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
                     </div>
                 {% else %}
                     {{ field }}
