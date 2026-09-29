@@ -1,21 +1,23 @@
 {% extends "base.html" %}
-{% load static %}
 
-{% block title %}KITH — Settings{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/user_settings/settings.css' %}">
-{% endblock %}
+{% block title %}Settings — Kith Multi-Branch Pharmacy{% endblock %}
 
 {% block content %}
-<div class="profile-card">
-    <h1>Settings</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label><input type="checkbox" name="dark_mode" {% if settings_obj.dark_mode %}checked{% endif %}> Dark mode</label><br>
-        <label><input type="checkbox" name="email_notifications" {% if settings_obj.email_notifications %}checked{% endif %}> Email notifications</label>
-        <button type="submit">Save</button>
-    </form>
-    <div class="switch-link"><a href="{% url 'home:home' %}">Back to Home</a></div>
-</div>
+<main class="page-center">
+    <div class="form-card">
+        <h2>System Settings</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="checkbox-row">
+                <input type="checkbox" id="dark_mode" name="dark_mode" {% if settings_obj.dark_mode %}checked{% endif %}>
+                <label for="dark_mode">Dark mode</label>
+            </div>
+            <div class="checkbox-row">
+                <input type="checkbox" id="email_notifications" name="email_notifications" {% if settings_obj.email_notifications %}checked{% endif %}>
+                <label for="email_notifications">Receive urgent low-stock email alerts</label>
+            </div>
+            <button type="submit" class="btn-submit">Save Settings</button>
+        </form>
+    </div>
+</main>
 {% endblock %}
