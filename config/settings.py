@@ -194,3 +194,7 @@ MAILERS = {
 LOGIN_URL = 'login:login'
 LOGIN_REDIRECT_URL = 'home:home'
 LOGOUT_REDIRECT_URL = 'login:login'
+
+# added - 09292026
+# Custom user model (ERD "User" table) - must be set BEFORE the first migrate
+AUTH_USER_MODEL = "register.User"
