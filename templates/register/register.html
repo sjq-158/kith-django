@@ -1,56 +1,48 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}KITH — Register{% endblock %}
+{% block title %}Register — Kith Multi-Branch Pharmacy{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/register/register.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="auth-card">
-    <h1>Create an Account</h1>
-    <p class="subtitle">Get access to the branch inventory system</p>
-    <form method="post">
-        {% csrf_token %}
-        {% for field in form %}
-            <p>
-                {% if field.name == 'password2' or field.name == 'confirm_password' %}
-                    <label for="{{ field.id_for_label }}">Confirm Password:</label>
-                {% else %}
-                    {{ field.label_tag }}
+<main class="auth-split-grid">
+    <div class="auth-left">
+        <div class="auth-card">
+            <h2>Create Account</h2>
+            <p class="subtitle">Join the Kith inventory management network</p>
+
+            <form method="post">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                <div class="form-error">{{ form.non_field_errors }}</div>
                 {% endif %}
 
-                {% if field.name == 'password' or field.name == 'password1' or field.name == 'password2' %}
-                    <div class="password-group">
-                        {{ field }}
-                        <button type="button" class="toggle-password" data-target="{{ field.id_for_label }}" aria-label="Toggle password visibility">
-                            <!-- Default Eye Icon (Show) -->
-                            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
-                            </svg>
-                        </button>
-                    </div>
-                {% else %}
+                {% for field in form %}
+                <div class="field-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
                     {{ field }}
-                {% endif %}
+                    {{ field.errors }}
+                </div>
+                {% endfor %}
 
-                {% if field.errors %}
-                    <ul class="errorlist">
-                        {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
-                    </ul>
-                {% endif %}
-            </p>
-        {% endfor %}
-        <button type="submit">Register</button>
-    </form>
-    <div class="switch-link">
-        Already have an account? <a href="{% url 'login:login' %}">Login here</a>
+                <button type="submit" class="btn-submit">Register Branch Account</button>
+            </form>
+
+            <div class="auth-footer">
+                Already have an account? <a href="{% url 'login:login' %}">Sign in here</a>
+            </div>
+        </div>
     </div>
-</div>
-{% endblock %}
 
-{% block extra_js %}
-<script src="{% static 'js/register/register.js' %}"></script>
+    <div class="auth-right-panel">
+        <h1 class="styled-headline">Join the <span>network.</span></h1>
+        <p>Onboard your pharmacy branch to streamline prescription tracking, sync inventory levels instantly, and automate multi-location replenishment.</p>
+        <div class="panel-image-card">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" alt="Pharmacy Network">
+        </div>
+    </div>
+</main>
 {% endblock %}
