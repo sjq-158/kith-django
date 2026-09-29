@@ -2,7 +2,7 @@
 
 # # Create your views here.
 
-# added
+# added - 09292026
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
@@ -13,3 +13,15 @@ from django.views import View
 class HomeScreen(View):
     def get(self, request):
         return render(request, "home/home.html")
+
+# added - 09152026
+# from django.contrib.auth.decorators import login_required
+# from django.shortcuts import render
+# from django.utils.decorators import method_decorator
+# from django.views import View
+
+
+# @method_decorator(login_required, name="dispatch")
+# class HomeScreen(View):
+#     def get(self, request):
+#         return render(request, "home/home.html")
