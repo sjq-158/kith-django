@@ -12,10 +12,16 @@
     <h1>My Profile</h1>
     <form method="post">
         {% csrf_token %}
-        <label for="full_name">Full name</label>
-        <input type="text" name="full_name" id="full_name" value="{{ profile.full_name }}">
-        <label for="bio">Bio</label>
-        <textarea name="bio" id="bio" rows="4">{{ profile.bio }}</textarea>
+                <label for="first_name">First name</label>
+        <input type="text" name="first_name" id="first_name" value="{{ profile.first_name }}">
+        <label for="last_name">Last name</label>
+        <input type="text" name="last_name" id="last_name" value="{{ profile.last_name }}">
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" id="phone" value="{{ phone }}">
+        {% if has_license %}
+        <label for="license_number">License number</label>
+        <input type="text" name="license_number" id="license_number" value="{{ profile.license_number }}">
+        {% endif %}
         <button type="submit">Save</button>
     </form>
     <div class="switch-link"><a href="{% url 'home:home' %}">Back to Home</a></div>
