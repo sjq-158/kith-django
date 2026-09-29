@@ -4,31 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}KITH{% endblock %}</title>
+    <title>{% block title %}KITH — Multi-Branch Pharmacy{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <header class="app-header">
-        <div class="header-left">
-            <span class="logo-badge">K</span>
-            <span class="app-title">KITH</span>
-            <span class="app-subtitle">Multi-Branch Pharmacy Inventory</span>
-        </div>
-        
-        {% if user.is_authenticated %}
-        <div class="header-right">
-            <a href="{% url 'login:logout' %}" class="header-logout-btn">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-                Logout
-            </a>
-        </div>
-        {% endif %}
-    </header>
 
-    <main class="main-container">
-        {% block content %}{% endblock %}
-    </main>
+    {% block header %}
+    {% if user.is_authenticated %}
+    <header class="header header--app">
+        <a href="{% url 'home:home' %}" class="logo-lockup">
+            <div class="logo-mark">K</div>
+            <div class="brand-text">
+                <h1>KITH</h1>
+                <p>Multi-branch pharmacy</p>
+            </div>
+        </a>
+        <nav class="floating-pill-nav">
+            <a href="{% url 'home:home' %}" class="nav-icon-btn {% if request.resolver_match.app_name == 'home' %}active{% endif %}" data-tooltip="Dashboard">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+            </a>
+            <a href="{% url 'profiles:profile' %}" class="nav-icon-btn {% if request.resolver_match.app_name == 'profiles' %}active{% endif %}" data-tooltip="Profile">
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </a>
+            <a href="{% url 'user_settings:settings' %}" class="nav-icon-btn {% if request.resolver_match.app_name == 'user_settings' %}active{% endif %}" data-tooltip="Settings">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </a>
+            <a href="{% url 'login:logout' %}" class="nav-icon-btn logout" data-tooltip="Logout">
+                <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            </a>
+        </nav>
+    </header>
+    {% else %}
+    <header class="header">
+        <a href="{% url 'home:landing' %}" class="logo-lockup">
+            <div class="logo-mark">K</div>
+            <div class="brand-text">
+                <h1>KITH</h1>
+                <p>Multi-branch pharmacy</p>
+            </div>
+        </a>
+    </header>
+    {% endif %}
+    {% endblock %}
+
+    {% block content %}{% endblock %}
 
     {% block extra_js %}{% endblock %}
 </body>
