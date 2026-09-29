@@ -3,10 +3,6 @@
 
 {% block title %}Register — Kith Multi-Branch Pharmacy{% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/register/register.css' %}">
-{% endblock %}
-
 {% block content %}
 <main class="auth-split-grid">
     <div class="auth-left">
@@ -14,7 +10,7 @@
             <h2>Create Account</h2>
             <p class="subtitle">Join the Kith inventory management network</p>
 
-            <form method="post">
+            <form method="post" novalidate>
                 {% csrf_token %}
                 {% if form.non_field_errors %}
                 <div class="form-error">{{ form.non_field_errors }}</div>
@@ -23,7 +19,16 @@
                 {% for field in form %}
                 <div class="field-group">
                     <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                    {% if field.name == 'password' or field.name == 'confirm_password' %}
+                    <div class="input-wrapper">
+                        {{ field }}
+                        <button type="button" class="toggle-password" data-target="{{ field.id_for_label }}" aria-label="Toggle password visibility">
+                            <svg class="eye-icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </button>
+                    </div>
+                    {% else %}
                     {{ field }}
+                    {% endif %}
                     {{ field.errors }}
                 </div>
                 {% endfor %}
@@ -45,4 +50,8 @@
         </div>
     </div>
 </main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/register/register.js' %}"></script>
 {% endblock %}
